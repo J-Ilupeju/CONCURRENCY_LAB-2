@@ -11,7 +11,8 @@ public class Program {
         // Set up the threads
         Thread[] threads = new Thread[threadCount_];
 
-        for (int tnum = 0; tnum < threadCount_; ++tnum) {
+        int tnum;
+        for (tnum = 0; tnum < threadCount_; ++tnum) {
             threads[tnum] = new Thread(() -> {
                 for (int d = 0; d < iterationCount_; ++d) {
                     c.increaseSuccessCount(d);
@@ -41,9 +42,8 @@ public class Program {
         long endTime = System.currentTimeMillis();
 
 
-        System.out.println(
-                String.format("Result was: %d and it completed in %f seconds",
-                        c.getSuccessCount(), (endTime - startTime) / 1000.0));
+        System.out.printf("Result was: %d and it completed in %f seconds%n",
+                c.getSuccessCount(), (endTime - startTime) / 1000.0);
     }
 }
 

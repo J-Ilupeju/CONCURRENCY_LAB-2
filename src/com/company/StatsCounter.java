@@ -6,8 +6,16 @@ public final class StatsCounter {
     public final int getSuccessCount() {
         return successCount_;
     }
-    public final void increaseSuccessCount(int delta) {
+    public final synchronized void increaseSuccessCount(int delta) {
+//        try {
+//            wait();
+//        } catch (InterruptedException e) {
+//           // e.printStackTrace();
+//        }
         successCount_ += delta;
+
+//        notifyAll();
+//        System.out.println( "Done insertion");
     }
 }
 
